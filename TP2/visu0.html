@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Visu 0 Leaflet</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+    <link rel="stylesheet" href="visu0.css" />
+</head>
+
+<body>
+
+<div id="map"> </div>
+
+<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+<script>
+var urltiles = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var attrib = '&copy; contributeurs <a href="http://osm.org/copyright">OpenStreetMap</a>';
+
+// ajouter une carte dans la div "map" et fixer le centre et le zoom
+var map = L.map('map').setView([45.19387, 5.76846], 18);
+
+// Ajout d'un marker
+L.marker([45.19383, 5.76826]).addTo(map);
+
+// Ajout d'une zone d'influence (un cercle)
+var influArea = L.circle([45.184359,5.753295],300, {
+    color : 'red',
+    fillColor : '#f03',
+    fillOpacity : 0.5
+}).addTo(map);
+
+// Ajout d'une Marker cercle
+var circleBerlioz = L.circleMarker([45.191117,5.758690],20, {
+    color : '#DDA0DD',
+    fillColor : '#f03',
+    fillOpacity : 0.5
+}).addTo(map);
+
+// Création et ajout d'une chemin
+var latlngs = [L.latLng(45.19393,5.76826),L.latLng(45.191117,5.758690),L.latLng(45.184308,5.753764)];
+var line = L.polyline(latlngs,{color:'blue'}).addTo(map);
+
+// Ajout d'une couche tuiles OpenStreetMap
+L.tileLayer(urltiles, {
+    attribution: attrib}
+).addTo(map);
+</script>
+
+</body>
+</html>

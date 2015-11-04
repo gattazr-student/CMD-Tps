@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <title>CR</title>
+      <style>.markdown-preview-katex { font-family: 'Helvetica Neue', Helvetica, sans-serif; font-size: 14px; line-height: 1.6; overflow: scroll; box-sizing: border-box; padding: 20px; background-color: rgb(255, 255, 255); }
+.markdown-preview-katex code { color: rgb(51, 51, 51); }
+.markdown-preview-katex pre, .markdown-preview-katex code, .markdown-preview-katex tt, .markdown-preview-katex pre.editor-colors { font-size: 12px; font-family: Consolas, 'Liberation Mono', Courier, monospace; }
+.markdown-preview-katex a, .markdown-preview-katex a code { color: rgb(65, 131, 196); }
+.markdown-preview-katex ol > li { list-style-type: decimal; }
+.markdown-preview-katex ul > li { list-style-type: disc; }
+.markdown-preview-katex li > pre.editor-colors { display: inline-block; vertical-align: top; width: 100%; }
+.markdown-preview-katex li:last-child > pre.editor-colors { margin-bottom: 0px; }
+.markdown-preview-katex > :first-child { margin-top: 0px !important; }
+.markdown-preview-katex > :last-child { margin-bottom: 0px !important; }
+.markdown-preview-katex a.absent { color: rgb(204, 0, 0); }
+.markdown-preview-katex a.anchor { display: block; padding-left: 30px; margin-left: -30px; cursor: pointer; position: absolute; top: 0px; left: 0px; bottom: 0px; }
+.markdown-preview-katex h1, .markdown-preview-katex h2, .markdown-preview-katex h3, .markdown-preview-katex h4, .markdown-preview-katex h5, .markdown-preview-katex h6 { font-family: 'Helvetica Neue', Helvetica, sans-serif; margin: 20px 0px 10px; padding: 0px 0px 10px; font-weight: bold; -webkit-font-smoothing: antialiased; cursor: text; position: relative; }
+.markdown-preview-katex h1 .octicon-link, .markdown-preview-katex h2 .octicon-link, .markdown-preview-katex h3 .octicon-link, .markdown-preview-katex h4 .octicon-link, .markdown-preview-katex h5 .octicon-link, .markdown-preview-katex h6 .octicon-link { display: none; color: rgb(0, 0, 0); }
+.markdown-preview-katex h1:hover a.anchor, .markdown-preview-katex h2:hover a.anchor, .markdown-preview-katex h3:hover a.anchor, .markdown-preview-katex h4:hover a.anchor, .markdown-preview-katex h5:hover a.anchor, .markdown-preview-katex h6:hover a.anchor { text-decoration: none; line-height: 1; padding-left: 0px; margin-left: -22px; top: 15%; }
+.markdown-preview-katex h1:hover a.anchor .octicon-link, .markdown-preview-katex h2:hover a.anchor .octicon-link, .markdown-preview-katex h3:hover a.anchor .octicon-link, .markdown-preview-katex h4:hover a.anchor .octicon-link, .markdown-preview-katex h5:hover a.anchor .octicon-link, .markdown-preview-katex h6:hover a.anchor .octicon-link { display: inline-block; }
+.markdown-preview-katex h1 tt, .markdown-preview-katex h2 tt, .markdown-preview-katex h3 tt, .markdown-preview-katex h4 tt, .markdown-preview-katex h5 tt, .markdown-preview-katex h6 tt, .markdown-preview-katex h1 code, .markdown-preview-katex h2 code, .markdown-preview-katex h3 code, .markdown-preview-katex h4 code, .markdown-preview-katex h5 code, .markdown-preview-katex h6 code { font-size: inherit; }
+.markdown-preview-katex h1 { font-size: 28px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(221, 221, 221); color: rgb(0, 0, 0); }
+.markdown-preview-katex h2 { font-size: 24px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); color: rgb(0, 0, 0); }
+.markdown-preview-katex h3 { font-size: 18px; }
+.markdown-preview-katex h4 { font-size: 16px; }
+.markdown-preview-katex h5 { font-size: 14px; }
+.markdown-preview-katex h6 { color: rgb(119, 119, 119); font-size: 14px; }
+.markdown-preview-katex p, .markdown-preview-katex blockquote, .markdown-preview-katex ul, .markdown-preview-katex ol, .markdown-preview-katex dl, .markdown-preview-katex table, .markdown-preview-katex pre, .markdown-preview-katex pre.editor-colors { margin: 15px 0px; }
+.markdown-preview-katex hr { border: 0px none; color: rgb(204, 204, 204); height: 4px; padding: 0px; margin: 15px 0px; background: url(atom://markdown-preview-katex/assets/hr.png) 0px 0px repeat-x transparent; }
+.markdown-preview-katex > h2:first-child, .markdown-preview-katex > h1:first-child, .markdown-preview-katex > h1:first-child + h2, .markdown-preview-katex > h3:first-child, .markdown-preview-katex > h4:first-child, .markdown-preview-katex > h5:first-child, .markdown-preview-katex > h6:first-child { margin-top: 0px; padding-top: 0px; }
+.markdown-preview-katex a:first-child h1, .markdown-preview-katex a:first-child h2, .markdown-preview-katex a:first-child h3, .markdown-preview-katex a:first-child h4, .markdown-preview-katex a:first-child h5, .markdown-preview-katex a:first-child h6 { margin-top: 0px; padding-top: 0px; }
+.markdown-preview-katex h1 + p, .markdown-preview-katex h2 + p, .markdown-preview-katex h3 + p, .markdown-preview-katex h4 + p, .markdown-preview-katex h5 + p, .markdown-preview-katex h6 + p { margin-top: 0px; }
+.markdown-preview-katex li p.first { display: inline-block; }
+.markdown-preview-katex ul, .markdown-preview-katex ol { padding-left: 30px; }
+.markdown-preview-katex ul.no-list, .markdown-preview-katex ol.no-list { list-style-type: none; padding: 0px; }
+.markdown-preview-katex ul li > :first-child, .markdown-preview-katex ol li > :first-child, .markdown-preview-katex ul li ul:first-of-type, .markdown-preview-katex ol li ul:first-of-type { margin-top: 0px; }
+.markdown-preview-katex ul ul, .markdown-preview-katex ul ol, .markdown-preview-katex ol ol, .markdown-preview-katex ol ul { margin-bottom: 0px; }
+.markdown-preview-katex dl { padding: 0px; }
+.markdown-preview-katex dl dt { font-size: 14px; font-weight: bold; font-style: italic; padding: 0px; margin: 15px 0px 5px; }
+.markdown-preview-katex dl dt:first-child { padding: 0px; }
+.markdown-preview-katex dl dt > :first-child { margin-top: 0px; }
+.markdown-preview-katex dl dt > :last-child { margin-bottom: 0px; }
+.markdown-preview-katex dl dd { margin: 0px 0px 15px; padding: 0px 15px; }
+.markdown-preview-katex dl dd > :first-child { margin-top: 0px; }
+.markdown-preview-katex dl dd > :last-child { margin-bottom: 0px; }
+.markdown-preview-katex blockquote { border-left-width: 4px; border-left-style: solid; border-left-color: rgb(221, 221, 221); padding: 0px 15px; color: rgb(119, 119, 119); }
+.markdown-preview-katex blockquote > :first-child { margin-top: 0px; }
+.markdown-preview-katex blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview-katex blockquote p { font-size: 16px; line-height: 1.5; }
+.markdown-preview-katex table th { font-weight: bold; }
+.markdown-preview-katex table th, .markdown-preview-katex table td { border: 1px solid rgb(204, 204, 204); padding: 6px 13px; }
+.markdown-preview-katex table tr { border-top-width: 1px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); }
+.markdown-preview-katex table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+.markdown-preview-katex img { max-width: 100%; }
+.markdown-preview-katex span.frame { display: block; overflow: hidden; }
+.markdown-preview-katex span.frame > span { border: 1px solid rgb(221, 221, 221); display: block; float: left; overflow: hidden; margin: 13px 0px 0px; padding: 7px; width: auto; }
+.markdown-preview-katex span.frame span img { display: block; float: left; }
+.markdown-preview-katex span.frame span span { clear: both; color: rgb(51, 51, 51); display: block; padding: 5px 0px 0px; }
+.markdown-preview-katex span.align-center { display: block; overflow: hidden; clear: both; }
+.markdown-preview-katex span.align-center > span { display: block; overflow: hidden; margin: 13px auto 0px; text-align: center; }
+.markdown-preview-katex span.align-center span img { margin: 0px auto; text-align: center; }
+.markdown-preview-katex span.align-right { display: block; overflow: hidden; clear: both; }
+.markdown-preview-katex span.align-right > span { display: block; overflow: hidden; margin: 13px 0px 0px; text-align: right; }
+.markdown-preview-katex span.align-right span img { margin: 0px; text-align: right; }
+.markdown-preview-katex span.float-left { display: block; margin-right: 13px; overflow: hidden; float: left; }
+.markdown-preview-katex span.float-left span { margin: 13px 0px 0px; }
+.markdown-preview-katex span.float-right { display: block; margin-left: 13px; overflow: hidden; float: right; }
+.markdown-preview-katex span.float-right > span { display: block; overflow: hidden; margin: 13px auto 0px; text-align: right; }
+.markdown-preview-katex code, .markdown-preview-katex tt { margin: 0px 2px; padding: 0px 5px; border: 1px solid rgb(234, 234, 234); border-radius: 3px; text-shadow: none; background-color: rgb(248, 248, 248); }
+.markdown-preview-katex code { white-space: nowrap; }
+.markdown-preview-katex pre, .markdown-preview-katex pre.editor-colors { font-size: 13px; line-height: 19px; overflow: auto; padding: 6px 10px; border-radius: 3px; border: 1px solid rgb(17, 23, 26); background: rgb(38, 50, 56); }
+.markdown-preview-katex pre > code { margin: 0px; padding: 0px; white-space: pre; border: none; word-wrap: normal; background: transparent; }
+.markdown-preview-katex pre code, .markdown-preview-katex pre tt { margin: 0px; padding: 0px; border: none; background-color: transparent; }
+.markdown-preview-katex kbd { border-radius: 2px; border-width: 1px; border-style: solid; border-color: rgb(221, 221, 221) rgb(204, 204, 204) rgb(204, 204, 204) rgb(221, 221, 221); padding: 1px 4px; line-height: 10px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-image: linear-gradient(rgb(241, 241, 241), rgb(221, 221, 221)); background-color: rgb(221, 221, 221); background-repeat: repeat-x; }
+.markdown-preview-katex .emoji { height: 20px; width: 20px; }
+.markdown-preview, .markdown-preview[data-use-github-style] { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; font-size: 16px; line-height: 1.6; word-wrap: break-word; overflow: scroll; box-sizing: border-box; padding: 20px; background-color: rgb(255, 255, 255); }
+.markdown-preview > :first-child, .markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
+.markdown-preview > :last-child, .markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
+.markdown-preview a:not([href]), .markdown-preview[data-use-github-style] a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview .absent, .markdown-preview[data-use-github-style] .absent { color: rgb(204, 0, 0); }
+.markdown-preview .anchor, .markdown-preview[data-use-github-style] .anchor { position: absolute; top: 0px; left: 0px; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; }
+.markdown-preview .anchor:focus, .markdown-preview[data-use-github-style] .anchor:focus { outline: none; }
+.markdown-preview h1, .markdown-preview[data-use-github-style] h1, .markdown-preview h2, .markdown-preview[data-use-github-style] h2, .markdown-preview h3, .markdown-preview[data-use-github-style] h3, .markdown-preview h4, .markdown-preview[data-use-github-style] h4, .markdown-preview h5, .markdown-preview[data-use-github-style] h5, .markdown-preview h6, .markdown-preview[data-use-github-style] h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; }
+.markdown-preview h1 .octicon-link, .markdown-preview[data-use-github-style] h1 .octicon-link, .markdown-preview h2 .octicon-link, .markdown-preview[data-use-github-style] h2 .octicon-link, .markdown-preview h3 .octicon-link, .markdown-preview[data-use-github-style] h3 .octicon-link, .markdown-preview h4 .octicon-link, .markdown-preview[data-use-github-style] h4 .octicon-link, .markdown-preview h5 .octicon-link, .markdown-preview[data-use-github-style] h5 .octicon-link, .markdown-preview h6 .octicon-link, .markdown-preview[data-use-github-style] h6 .octicon-link { display: none; color: rgb(0, 0, 0); vertical-align: middle; }
+.markdown-preview h1:hover .anchor, .markdown-preview[data-use-github-style] h1:hover .anchor, .markdown-preview h2:hover .anchor, .markdown-preview[data-use-github-style] h2:hover .anchor, .markdown-preview h3:hover .anchor, .markdown-preview[data-use-github-style] h3:hover .anchor, .markdown-preview h4:hover .anchor, .markdown-preview[data-use-github-style] h4:hover .anchor, .markdown-preview h5:hover .anchor, .markdown-preview[data-use-github-style] h5:hover .anchor, .markdown-preview h6:hover .anchor, .markdown-preview[data-use-github-style] h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; }
+.markdown-preview h1:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h1:hover .anchor .octicon-link, .markdown-preview h2:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h2:hover .anchor .octicon-link, .markdown-preview h3:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h3:hover .anchor .octicon-link, .markdown-preview h4:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h4:hover .anchor .octicon-link, .markdown-preview h5:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h5:hover .anchor .octicon-link, .markdown-preview h6:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h6:hover .anchor .octicon-link { display: inline-block; }
+.markdown-preview h1 tt, .markdown-preview[data-use-github-style] h1 tt, .markdown-preview h2 tt, .markdown-preview[data-use-github-style] h2 tt, .markdown-preview h3 tt, .markdown-preview[data-use-github-style] h3 tt, .markdown-preview h4 tt, .markdown-preview[data-use-github-style] h4 tt, .markdown-preview h5 tt, .markdown-preview[data-use-github-style] h5 tt, .markdown-preview h6 tt, .markdown-preview[data-use-github-style] h6 tt, .markdown-preview h1 code, .markdown-preview[data-use-github-style] h1 code, .markdown-preview h2 code, .markdown-preview[data-use-github-style] h2 code, .markdown-preview h3 code, .markdown-preview[data-use-github-style] h3 code, .markdown-preview h4 code, .markdown-preview[data-use-github-style] h4 code, .markdown-preview h5 code, .markdown-preview[data-use-github-style] h5 code, .markdown-preview h6 code, .markdown-preview[data-use-github-style] h6 code { font-size: inherit; }
+.markdown-preview h1, .markdown-preview[data-use-github-style] h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+.markdown-preview h1 .anchor, .markdown-preview[data-use-github-style] h1 .anchor { line-height: 1; }
+.markdown-preview h2, .markdown-preview[data-use-github-style] h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+.markdown-preview h2 .anchor, .markdown-preview[data-use-github-style] h2 .anchor { line-height: 1; }
+.markdown-preview h3, .markdown-preview[data-use-github-style] h3 { font-size: 1.5em; line-height: 1.43; }
+.markdown-preview h3 .anchor, .markdown-preview[data-use-github-style] h3 .anchor { line-height: 1.2; }
+.markdown-preview h4, .markdown-preview[data-use-github-style] h4 { font-size: 1.25em; }
+.markdown-preview h4 .anchor, .markdown-preview[data-use-github-style] h4 .anchor { line-height: 1.2; }
+.markdown-preview h5, .markdown-preview[data-use-github-style] h5 { font-size: 1em; }
+.markdown-preview h5 .anchor, .markdown-preview[data-use-github-style] h5 .anchor { line-height: 1.1; }
+.markdown-preview h6, .markdown-preview[data-use-github-style] h6 { font-size: 1em; color: rgb(119, 119, 119); }
+.markdown-preview h6 .anchor, .markdown-preview[data-use-github-style] h6 .anchor { line-height: 1.1; }
+.markdown-preview p, .markdown-preview[data-use-github-style] p, .markdown-preview blockquote, .markdown-preview[data-use-github-style] blockquote, .markdown-preview ul, .markdown-preview[data-use-github-style] ul, .markdown-preview ol, .markdown-preview[data-use-github-style] ol, .markdown-preview dl, .markdown-preview[data-use-github-style] dl, .markdown-preview table, .markdown-preview[data-use-github-style] table, .markdown-preview pre, .markdown-preview[data-use-github-style] pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview hr, .markdown-preview[data-use-github-style] hr { height: 4px; padding: 0px; margin: 16px 0px; border: 0px none; background-color: rgb(231, 231, 231); }
+.markdown-preview ul, .markdown-preview[data-use-github-style] ul, .markdown-preview ol, .markdown-preview[data-use-github-style] ol { padding-left: 2em; }
+.markdown-preview ul.no-list, .markdown-preview[data-use-github-style] ul.no-list, .markdown-preview ol.no-list, .markdown-preview[data-use-github-style] ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview ul ul, .markdown-preview[data-use-github-style] ul ul, .markdown-preview ul ol, .markdown-preview[data-use-github-style] ul ol, .markdown-preview ol ol, .markdown-preview[data-use-github-style] ol ol, .markdown-preview ol ul, .markdown-preview[data-use-github-style] ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview li > p, .markdown-preview[data-use-github-style] li > p { margin-top: 16px; }
+.markdown-preview dl, .markdown-preview[data-use-github-style] dl { padding: 0px; }
+.markdown-preview dl dt, .markdown-preview[data-use-github-style] dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
+.markdown-preview dl dd, .markdown-preview[data-use-github-style] dl dd { padding: 0px 16px; margin-bottom: 16px; }
+.markdown-preview blockquote, .markdown-preview[data-use-github-style] blockquote { padding: 0px 15px; color: rgb(119, 119, 119); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(221, 221, 221); }
+.markdown-preview blockquote > :first-child, .markdown-preview[data-use-github-style] blockquote > :first-child { margin-top: 0px; }
+.markdown-preview blockquote > :last-child, .markdown-preview[data-use-github-style] blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview table, .markdown-preview[data-use-github-style] table { display: block; width: 100%; overflow: auto; word-break: normal; }
+.markdown-preview table th, .markdown-preview[data-use-github-style] table th { font-weight: bold; }
+.markdown-preview table th, .markdown-preview[data-use-github-style] table th, .markdown-preview table td, .markdown-preview[data-use-github-style] table td { padding: 6px 13px; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview table tr, .markdown-preview[data-use-github-style] table tr { border-top-width: 1px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); }
+.markdown-preview table tr:nth-child(2n), .markdown-preview[data-use-github-style] table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+.markdown-preview img, .markdown-preview[data-use-github-style] img { max-width: 100%; box-sizing: border-box; }
+.markdown-preview .emoji, .markdown-preview[data-use-github-style] .emoji { max-width: none; }
+.markdown-preview span.frame, .markdown-preview[data-use-github-style] span.frame { display: block; overflow: hidden; }
+.markdown-preview span.frame > span, .markdown-preview[data-use-github-style] span.frame > span { display: block; float: left; width: auto; padding: 7px; margin: 13px 0px 0px; overflow: hidden; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview span.frame span img, .markdown-preview[data-use-github-style] span.frame span img { display: block; float: left; }
+.markdown-preview span.frame span span, .markdown-preview[data-use-github-style] span.frame span span { display: block; padding: 5px 0px 0px; clear: both; color: rgb(51, 51, 51); }
+.markdown-preview span.align-center, .markdown-preview[data-use-github-style] span.align-center { display: block; overflow: hidden; clear: both; }
+.markdown-preview span.align-center > span, .markdown-preview[data-use-github-style] span.align-center > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: center; }
+.markdown-preview span.align-center span img, .markdown-preview[data-use-github-style] span.align-center span img { margin: 0px auto; text-align: center; }
+.markdown-preview span.align-right, .markdown-preview[data-use-github-style] span.align-right { display: block; overflow: hidden; clear: both; }
+.markdown-preview span.align-right > span, .markdown-preview[data-use-github-style] span.align-right > span { display: block; margin: 13px 0px 0px; overflow: hidden; text-align: right; }
+.markdown-preview span.align-right span img, .markdown-preview[data-use-github-style] span.align-right span img { margin: 0px; text-align: right; }
+.markdown-preview span.float-left, .markdown-preview[data-use-github-style] span.float-left { display: block; float: left; margin-right: 13px; overflow: hidden; }
+.markdown-preview span.float-left span, .markdown-preview[data-use-github-style] span.float-left span { margin: 13px 0px 0px; }
+.markdown-preview span.float-right, .markdown-preview[data-use-github-style] span.float-right { display: block; float: right; margin-left: 13px; overflow: hidden; }
+.markdown-preview span.float-right > span, .markdown-preview[data-use-github-style] span.float-right > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: right; }
+.markdown-preview code, .markdown-preview[data-use-github-style] code, .markdown-preview tt, .markdown-preview[data-use-github-style] tt { padding: 0.2em 0px; margin: 0px; font-size: 85%; border-radius: 3px; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview code::before, .markdown-preview[data-use-github-style] code::before, .markdown-preview tt::before, .markdown-preview[data-use-github-style] tt::before, .markdown-preview code::after, .markdown-preview[data-use-github-style] code::after, .markdown-preview tt::after, .markdown-preview[data-use-github-style] tt::after { letter-spacing: -0.2em; content: ' '; }
+.markdown-preview code br, .markdown-preview[data-use-github-style] code br, .markdown-preview tt br, .markdown-preview[data-use-github-style] tt br { display: none; }
+.markdown-preview del code, .markdown-preview[data-use-github-style] del code { text-decoration: inherit; }
+.markdown-preview pre > code, .markdown-preview[data-use-github-style] pre > code { padding: 0px; margin: 0px; font-size: 100%; word-break: normal; white-space: pre; border: 0px; background: transparent; }
+.markdown-preview .highlight, .markdown-preview[data-use-github-style] .highlight { margin-bottom: 16px; }
+.markdown-preview .highlight pre, .markdown-preview[data-use-github-style] .highlight pre, .markdown-preview pre, .markdown-preview[data-use-github-style] pre { padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; border-radius: 3px; background-color: rgb(247, 247, 247); }
+.markdown-preview .highlight pre, .markdown-preview[data-use-github-style] .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview pre, .markdown-preview[data-use-github-style] pre { word-wrap: normal; }
+.markdown-preview pre code, .markdown-preview[data-use-github-style] pre code, .markdown-preview pre tt, .markdown-preview[data-use-github-style] pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview pre code::before, .markdown-preview[data-use-github-style] pre code::before, .markdown-preview pre tt::before, .markdown-preview[data-use-github-style] pre tt::before, .markdown-preview pre code::after, .markdown-preview[data-use-github-style] pre code::after, .markdown-preview pre tt::after, .markdown-preview[data-use-github-style] pre tt::after { content: normal; }
+.markdown-preview kbd, .markdown-preview[data-use-github-style] kbd { display: inline-block; padding: 3px 5px; font-size: 11px; line-height: 10px; color: rgb(85, 85, 85); vertical-align: middle; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview, .markdown-preview[data-use-github-style], .markdown-preview code, .markdown-preview[data-use-github-style] code { color: rgb(51, 51, 51); }
+.markdown-preview h1, .markdown-preview[data-use-github-style] h1, .markdown-preview h2, .markdown-preview[data-use-github-style] h2, .markdown-preview h3, .markdown-preview[data-use-github-style] h3, .markdown-preview h4, .markdown-preview[data-use-github-style] h4, .markdown-preview h5, .markdown-preview[data-use-github-style] h5, .markdown-preview h6, .markdown-preview[data-use-github-style] h6 { -webkit-font-smoothing: antialiased; cursor: text; }
+.markdown-preview > h1:first-child, .markdown-preview[data-use-github-style] > h1:first-child, .markdown-preview > h1:first-child + h2, .markdown-preview[data-use-github-style] > h1:first-child + h2, .markdown-preview > h2:first-child, .markdown-preview[data-use-github-style] > h2:first-child, .markdown-preview > h3:first-child, .markdown-preview[data-use-github-style] > h3:first-child, .markdown-preview > h4:first-child, .markdown-preview[data-use-github-style] > h4:first-child, .markdown-preview > h5:first-child, .markdown-preview[data-use-github-style] > h5:first-child, .markdown-preview > h6:first-child, .markdown-preview[data-use-github-style] > h6:first-child { margin-top: 0px; padding-top: 0px; }
+.markdown-preview a, .markdown-preview[data-use-github-style] a, .markdown-preview a code, .markdown-preview[data-use-github-style] a code { color: rgb(65, 131, 196); }
+.markdown-preview a:first-child h1, .markdown-preview[data-use-github-style] a:first-child h1, .markdown-preview a:first-child h2, .markdown-preview[data-use-github-style] a:first-child h2, .markdown-preview a:first-child h3, .markdown-preview[data-use-github-style] a:first-child h3, .markdown-preview a:first-child h4, .markdown-preview[data-use-github-style] a:first-child h4, .markdown-preview a:first-child h5, .markdown-preview[data-use-github-style] a:first-child h5, .markdown-preview a:first-child h6, .markdown-preview[data-use-github-style] a:first-child h6 { margin-top: 0px; padding-top: 0px; }
+.markdown-preview h1 + p, .markdown-preview[data-use-github-style] h1 + p, .markdown-preview h2 + p, .markdown-preview[data-use-github-style] h2 + p, .markdown-preview h3 + p, .markdown-preview[data-use-github-style] h3 + p, .markdown-preview h4 + p, .markdown-preview[data-use-github-style] h4 + p, .markdown-preview h5 + p, .markdown-preview[data-use-github-style] h5 + p, .markdown-preview h6 + p, .markdown-preview[data-use-github-style] h6 + p { margin-top: 0px; }
+.markdown-preview li p.first, .markdown-preview[data-use-github-style] li p.first { display: inline-block; }
+.markdown-preview ul li > :first-child, .markdown-preview[data-use-github-style] ul li > :first-child, .markdown-preview ol li > :first-child, .markdown-preview[data-use-github-style] ol li > :first-child, .markdown-preview ul li ul:first-of-type, .markdown-preview[data-use-github-style] ul li ul:first-of-type, .markdown-preview ol li ul:first-of-type, .markdown-preview[data-use-github-style] ol li ul:first-of-type { margin-top: 0px; }
+.markdown-preview ol > li, .markdown-preview[data-use-github-style] ol > li { list-style-type: decimal; }
+.markdown-preview ul > li, .markdown-preview[data-use-github-style] ul > li { list-style-type: disc; }
+.markdown-preview dl dt:first-child, .markdown-preview[data-use-github-style] dl dt:first-child { padding: 0px; }
+.markdown-preview dl dt > :first-child, .markdown-preview[data-use-github-style] dl dt > :first-child { margin-top: 0px; }
+.markdown-preview dl dt > :last-child, .markdown-preview[data-use-github-style] dl dt > :last-child { margin-bottom: 0px; }
+.markdown-preview dl dd > :first-child, .markdown-preview[data-use-github-style] dl dd > :first-child { margin-top: 0px; }
+.markdown-preview dl dd > :last-child, .markdown-preview[data-use-github-style] dl dd > :last-child { margin-bottom: 0px; }
+.markdown-preview blockquote p, .markdown-preview[data-use-github-style] blockquote p { font-size: 16px; line-height: 1.5; }
+.markdown-preview pre.editor-colors, .markdown-preview[data-use-github-style] pre.editor-colors { padding: 16px; overflow: auto; font-size: 84%; line-height: 1.45; border-radius: 3px; background-color: rgb(38, 50, 56); }
+.markdown-preview pre.editor-colors, .markdown-preview[data-use-github-style] pre.editor-colors { margin-bottom: 16px; word-break: normal; }
+.markdown-preview code, .markdown-preview[data-use-github-style] code, .markdown-preview tt, .markdown-preview[data-use-github-style] tt, .markdown-preview pre.editor-colors, .markdown-preview[data-use-github-style] pre.editor-colors { font-family: Consolas, 'Liberation Mono', Courier, monospace; }
+.markdown-preview .emoji, .markdown-preview[data-use-github-style] .emoji { height: 20px; width: 20px; }
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+
+.spell-check-misspelling .region {
+  border-bottom: 1px dashed rgba(250, 128, 114, 0.5);
+}
+
+pre.editor-colors,
+.host {
+  background-color: #263238;
+  color: #cdd3de;
+}
+pre.editor-colors .gutter,
+.host .gutter {
+  background-color: #263238;
+  color: #506e79;
+}
+pre.editor-colors .gutter .line-number.cursor-line,
+.host .gutter .line-number.cursor-line {
+  background-color: rgba(0, 0, 0, 0.19);
+  color: #cdd3de;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection,
+.host .gutter .line-number.cursor-line-no-selection {
+  color: #cdd3de;
+}
+pre.editor-colors .wrap-guide,
+.host .wrap-guide {
+  color: #65737e;
+}
+pre.editor-colors .indent-guide,
+.host .indent-guide {
+  color: #65737e;
+}
+pre.editor-colors .invisible-character,
+.host .invisible-character {
+  color: #65737e;
+}
+pre.editor-colors .search-results .marker .region,
+.host .search-results .marker .region {
+  background-color: transparent;
+  border: #65737e;
+}
+pre.editor-colors .search-results .marker.current-result .region,
+.host .search-results .marker.current-result .region {
+  border: #cdd3de;
+}
+pre.editor-colors.is-focused .cursor,
+.host(.is-focused) .cursor {
+  border-color: #c0c5ce;
+}
+pre.editor-colors.is-focused .selection .region,
+.host(.is-focused) .selection .region {
+  background-color: rgba(128, 203, 196, 0.13);
+}
+pre.editor-colors.is-focused .line-number.cursor-line-no-selection,
+pre.editor-colors.is-focused .line.cursor-line,
+.host(.is-focused) .line-number.cursor-line-no-selection,
+.host(.is-focused) .line.cursor-line {
+  background-color: rgba(0, 0, 0, 0.19);
+}
+.variable.parameter.function {
+  color: #eeffff;
+}
+.comment,
+.punctuation.definition.comment {
+  color: #506e79;
+}
+.punctuation.definition.string,
+.punctuation.definition.variable,
+.punctuation.definition.string,
+.punctuation.definition.parameters,
+.punctuation.definition.string,
+.punctuation.definition.array {
+  color: #d9f5dd;
+}
+.none {
+  color: #d9f5dd;
+}
+.keyword.operator {
+  color: #d9f5dd;
+}
+.keyword {
+  color: #c792ea;
+}
+.variable {
+  color: #ff5370;
+}
+.entity.name.function,
+.meta.require,
+.support.function.any-method,
+.meta.function-call,
+.support.function,
+.keyword.other.special-method,
+.meta.block-level {
+  color: #82b1ff;
+}
+.support.class,
+.entity.name.class,
+.entity.name.type.class {
+  color: #ffcb6b;
+}
+.meta.class {
+  color: #fff;
+}
+.keyword.other.special-method {
+  color: #82b1ff;
+}
+.storage {
+  color: #c792ea;
+}
+.support.function,
+.keyword.operator,
+.constant.other.color,
+.meta.tag,
+.punctuation.definition.tag,
+.punctuation.separator.inheritance.php,
+.punctuation.definition.tag.html,
+.punctuation.definition.tag.begin.html,
+.punctuation.definition.tag.end.html {
+  color: #80cbc4;
+}
+.string,
+.constant.other.symbol,
+.entity.other.inherited-class {
+  color: #c3e88d;
+}
+.constant.numeric {
+  color: #f77669;
+}
+.none {
+  color: #f77669;
+}
+.none {
+  color: #f77669;
+}
+.constant {
+  color: #f77669;
+}
+.entity.name.tag {
+  color: #ff5370;
+}
+.entity.other.attribute-name {
+  color: #c3e88d;
+}
+.entity.other.attribute-name.id {
+  color: #fad430;
+}
+.meta.selector {
+  color: #c792ea;
+}
+.none {
+  color: #f77669;
+}
+.markup.heading .punctuation.definition.heading,
+.entity.name.section {
+  color: #78ccf0;
+}
+.keyword.other.unit {
+  color: #f77669;
+}
+.markup.bold,
+.punctuation.definition.bold {
+  font-weight: bold;
+  color: #ffcb6b;
+}
+.markup.italic,
+.punctuation.definition.italic {
+  font-style: italic;
+  color: #c792ea;
+}
+.markup.raw.inline,
+.markup.raw {
+  color: #f1e655;
+}
+.string.other.link,
+.punctuation.definition.string.end.markdown {
+  color: #ff5370;
+}
+[data-grammar*="gfm"]::shadow .markup.underline.link {
+  color: #ff869a;
+}
+[data-grammar*="gfm"]::shadow .markup.underline.link span.punctuation {
+  color: #ff5370;
+}
+[data-grammar*="gfm"]::shadow .markup.strike {
+  position: relative;
+  color: rgba(205, 211, 222, 0.5);
+}
+[data-grammar*="gfm"]::shadow .markup.strike::after {
+  content: "";
+  position: absolute;
+  top: calc(54%);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: rgba(205, 211, 222, 0.2);
+}
+[data-grammar*="gfm"]::shadow .table .border {
+  color: rgba(205, 211, 222, 0.5);
+}
+[data-grammar*="gfm"]::shadow .markup.heading {
+  color: #82b1ff;
+}
+[data-grammar*="gfm"]::shadow .punctuation.definition.begin,
+[data-grammar*="gfm"]::shadow .punctuation.definition.end {
+  color: #82b1ff;
+}
+[data-grammar*="gfm"]::shadow .punctuation.definition.begin + span:not(.function.parameter) {
+  color: #9cc1ff;
+}
+.meta.link {
+  color: #f77669;
+}
+.markup.list {
+  color: #ff5370;
+}
+.markup.quote {
+  color: #f77669;
+}
+.meta.separator {
+  color: #d9f5dd;
+  background-color: #1e3445;
+}
+.markup.inserted {
+  color: #f1e655;
+}
+.markup.deleted {
+  color: #ff5370;
+}
+.markup.changed {
+  color: #c792ea;
+}
+.constant.other.color,
+.meta.property-value .support.constant.named-color.css {
+  color: #ffeb95;
+}
+.string.regexp {
+  color: #80cbc4;
+}
+.constant.character.escape {
+  color: #80cbc4;
+}
+.punctuation.section.embedded,
+.variable.interpolation {
+  color: #d3423e;
+}
+.invalid.illegal {
+  color: #ffffff;
+  background-color: #ec5f67;
+}
+.invalid.broken {
+  color: #020e14;
+  background-color: #f77669;
+}
+.invalid.deprecated {
+  color: #ffffff;
+  background-color: #d3423e;
+}
+.invalid.unimplemented {
+  color: #ffffff;
+  background-color: #8bd649;
+}
+.sublimelinter.annotations {
+  color: #7b5157;
+  background-color: #fffff7;
+}
+.sublimelinter.outline.illegal {
+  color: #ffffff;
+  background-color: #ff9599;
+}
+.sublimelinter.underline.illegal {
+  background-color: #ff4941;
+}
+.sublimelinter.outline.warning {
+  color: #ffffff;
+  background-color: #ffcf1b;
+}
+.sublimelinter.underline.warning {
+  background-color: #ff4941;
+}
+.sublimelinter.outline.violation {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.sublimelinter.underline.violation {
+  background-color: #ff4941;
+}
+.sublimelinter.mark.error {
+  color: #ff572d;
+}
+.sublimelinter.mark.warning {
+  color: #ffcf1b;
+}
+.sublimelinter.gutter-mark {
+  color: #ffffff;
+}
+.markup.deleted.git_gutter {
+  color: #ec5f67;
+}
+.markup.changed.git_gutter {
+  color: #ffcf1b;
+}
+.markup.inserted.git_gutter {
+  color: #c3e88d;
+}
+.markup.ignored.git_gutter {
+  color: #546e7a;
+}
+.comment.line.double-slash .punctuation.definition.comment,
+.meta.structure.array .comment.block.json .punctuation.definition.comment {
+  color: #506e79;
+}
+.support.type.property-name {
+  color: #80cbc4;
+}
+.meta.property-list .meta.property-name {
+  color: #80cbc4;
+}
+.source.css .keyword.other.unit,
+.source.less .keyword.other.unit,
+.source.scss .keyword.other.unit,
+.source.sass .keyword.other.unit {
+  color: #ffeb95;
+}
+.entity.other.less.mixin {
+  color: #7986cb;
+}
+.constant.other.color.rgb-value .punctuation.definition.constant {
+  color: #f77669;
+}
+.meta.attribute-selector .string.unquoted.attribute-value {
+  color: #c3e88d;
+}
+.meta.attribute-selector .entity.other.attribute-name.attribute {
+  color: #f77669;
+}
+.bracket-matcher .region {
+  border-bottom: 1px solid #c0c5ce;
+  box-sizing: border-box;
+  background-color: #364850;
+}
+</style>
+  </head>
+  <body class='markdown-preview'><h1 id="tp3-compte-rendu">TP3 - Compte rendu</h1>
+<p>Ce TP a été effectué par Quentin GERRY et Rémi GATTAZ</p>
+<h2 id="leaflet-le-retour">Leaflet, le retour</h2>
+<p>1.</p>
+<p>Pour rajouer un comportement lors d&#39;un clic sur la carte, il faut enregistrer une fonction listener sur l&#39;évènement <code>click</code>. Cela se fait de la façon suivante :</p>
+<pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="meta function js"><span class="storage type function js"><span>function</span></span><span>&nbsp;</span><span class="entity name function js"><span>onMapClick</span></span><span class="punctuation definition parameters begin js"><span>(</span></span><span class="variable parameter function js"><span>e</span></span><span class="punctuation definition parameters end js"><span>)</span></span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="support function js"><span>alert</span></span><span class="meta brace round js"><span>(</span></span><span class="string quoted double js"><span class="punctuation definition string begin js"><span>&quot;</span></span><span>You&nbsp;clicked&nbsp;the&nbsp;map&nbsp;at&nbsp;</span><span class="punctuation definition string end js"><span>&quot;</span></span></span><span>&nbsp;</span><span class="keyword operator js"><span>+</span></span><span>&nbsp;e</span><span class="meta delimiter method period js"><span>.</span></span><span>latlng</span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span class="meta brace curly js"><span>}</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;</span></span></div><div class="line"><span class="source js"><span>map</span><span class="meta delimiter method period js"><span>.</span></span><span>on</span><span class="meta brace round js"><span>(</span></span><span class="string quoted single js"><span class="punctuation definition string begin js"><span>&#39;</span></span><span>click</span><span class="punctuation definition string end js"><span>&#39;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;onMapClick</span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre>
+<p>Pour faire apparaitre un popup au cours de cet évènement, voici une façon de procéder :</p>
+<pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="meta function js"><span class="storage type function js"><span>function</span></span><span>&nbsp;</span><span class="entity name function js"><span>onMapClick</span></span><span class="punctuation definition parameters begin js"><span>(</span></span><span class="variable parameter function js"><span>e</span></span><span class="punctuation definition parameters end js"><span>)</span></span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage modifier js"><span>var</span></span><span>&nbsp;popup&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;L</span><span class="meta delimiter method period js"><span>.</span></span><span>popup</span><span class="meta brace round js"><span>(</span><span>)</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta delimiter method period js"><span>.</span></span><span>setLatLng</span><span class="meta brace round js"><span>(</span></span><span>e</span><span class="meta delimiter method period js"><span>.</span></span><span>latlng</span><span class="meta brace round js"><span>)</span></span><span>&nbsp;</span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;Position&nbsp;du&nbsp;popup</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta delimiter method period js"><span>.</span></span><span>setContent</span><span class="meta brace round js"><span>(</span></span><span class="string quoted double js"><span class="punctuation definition string begin js"><span>&quot;</span></span><span>Les&nbsp;coordonnées&nbsp;de&nbsp;ce&nbsp;point&nbsp;sont&nbsp;:&nbsp;</span><span class="punctuation definition string end js"><span>&quot;</span></span></span><span>&nbsp;</span><span class="keyword operator js"><span>+</span></span><span>&nbsp;e</span><span class="meta delimiter method period js"><span>.</span></span><span>latlng</span><span class="meta brace round js"><span>)</span></span><span>&nbsp;</span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;Conteenu</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta delimiter method period js"><span>.</span></span><span>openOn</span><span class="meta brace round js"><span>(</span></span><span>map</span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span><span class="comment line double-slash js"><span class="punctuation definition comment js"><span>//</span></span><span>&nbsp;Carte&nbsp;à&nbsp;laquelle&nbsp;associer&nbsp;le&nbsp;popup</span><span>&nbsp;</span></span></span></div><div class="line"><span class="source js"><span class="meta brace curly js"><span>}</span></span></span></div></pre>
+<p><strong>2.</strong></p>
+<p>Pour ajouter un zoom définit par deux click sur la carte, voici le code que nous avons alors mis en place dans la fonction lié à l&#39;évènement click.</p>
+<pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="storage modifier js"><span>var</span></span><span>&nbsp;point&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;</span><span class="constant language null js"><span>null</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span class="storage modifier js"><span>var</span></span><span>&nbsp;layer&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;L</span><span class="meta delimiter method period js"><span>.</span></span><span>layerGroup</span><span class="meta brace round js"><span>(</span></span><span class="meta brace square js"><span>[</span><span>]</span></span><span class="meta brace round js"><span>)</span></span></span></div><div class="line"><span class="source js"><span class="meta function js"><span class="storage type function js"><span>function</span></span><span>&nbsp;</span><span class="entity name function js"><span>onMapClick</span></span><span class="punctuation definition parameters begin js"><span>(</span></span><span class="variable parameter function js"><span>e</span></span><span class="punctuation definition parameters end js"><span>)</span></span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control js"><span>if</span></span><span class="meta brace round js"><span>(</span></span><span>point&nbsp;</span><span class="keyword operator js"><span>==</span></span><span>&nbsp;</span><span class="constant language null js"><span>null</span></span><span class="meta brace round js"><span>)</span></span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;point&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;e</span><span class="meta delimiter method period js"><span>.</span></span><span>latlng</span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;layer</span><span class="meta delimiter method period js"><span>.</span></span><span>clearLayers</span><span class="meta brace round js"><span>(</span><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta brace curly js"><span>}</span></span><span class="keyword control js"><span>else</span></span><span class="meta brace curly js"><span>{</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage modifier js"><span>var</span></span><span>&nbsp;bounds&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;</span><span class="meta brace square js"><span>[</span></span><span>point</span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;e</span><span class="meta delimiter method period js"><span>.</span></span><span>latlng</span><span class="meta brace square js"><span>]</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;layer</span><span class="meta delimiter method period js"><span>.</span></span><span>addLayer</span><span class="meta brace round js"><span>(</span></span><span>L</span><span class="meta delimiter method period js"><span>.</span></span><span>rectangle</span><span class="meta brace round js"><span>(</span></span><span>bounds</span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span><span>color</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="string quoted double js"><span class="punctuation definition string begin js"><span>&quot;</span></span><span>#ff7800</span><span class="punctuation definition string end js"><span>&quot;</span></span></span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;weight</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;</span><span class="constant numeric js"><span>1</span></span><span class="meta brace curly js"><span>}</span></span><span class="meta brace round js"><span>)</span><span>)</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta delimiter method period js"><span>.</span></span><span>addTo</span><span class="meta brace round js"><span>(</span></span><span>map</span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map</span><span class="meta delimiter method period js"><span>.</span></span><span>fitBounds</span><span class="meta brace round js"><span>(</span></span><span>bounds</span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;point&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;</span><span class="constant language null js"><span>null</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta brace curly js"><span>}</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;</span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="storage modifier js"><span>var</span></span><span>&nbsp;popup&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;L</span><span class="meta delimiter method period js"><span>.</span></span><span>popup</span><span class="meta brace round js"><span>(</span><span>)</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta delimiter method period js"><span>.</span></span><span>setLatLng</span><span class="meta brace round js"><span>(</span></span><span>e</span><span class="meta delimiter method period js"><span>.</span></span><span>latlng</span><span class="meta brace round js"><span>)</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta delimiter method period js"><span>.</span></span><span>setContent</span><span class="meta brace round js"><span>(</span></span><span class="string quoted double js"><span class="punctuation definition string begin js"><span>&quot;</span></span><span>Les&nbsp;coordonnées&nbsp;de&nbsp;ce&nbsp;point&nbsp;sont&nbsp;:&nbsp;</span><span class="punctuation definition string end js"><span>&quot;</span></span></span><span>&nbsp;</span><span class="keyword operator js"><span>+</span></span><span>&nbsp;e</span><span class="meta delimiter method period js"><span>.</span></span><span>latlng</span><span class="meta brace round js"><span>)</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta delimiter method period js"><span>.</span></span><span>openOn</span><span class="meta brace round js"><span>(</span></span><span>map</span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span class="meta brace curly js"><span>}</span></span></span></div></pre>
+<p><strong>3.</strong></p>
+<p>Ajouter un minimap à la carte est très simple. Il suffit de créer une couche pour celle-ci et de la rajouter à la carte.</p>
+<pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="comment block js"><span class="punctuation definition comment js"><span>/*</span></span><span>&nbsp;Minimap&nbsp;</span><span class="punctuation definition comment js"><span>*/</span></span></span></span></div><div class="line"><span class="source js"><span class="storage modifier js"><span>var</span></span><span>&nbsp;layerMinimap&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;</span><span class="meta class instance constructor"><span class="keyword operator new js"><span>new</span></span><span>&nbsp;</span><span class="entity name type instance js"><span>L.TileLayer</span></span></span><span class="meta brace round js"><span>(</span></span><span>urltiles</span><span class="meta delimiter object comma js"><span>,</span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span><span>attribution</span><span class="keyword operator js"><span>:</span></span><span>&nbsp;attrib</span><span class="meta brace curly js"><span>}</span></span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span class="storage modifier js"><span>var</span></span><span>&nbsp;miniMap&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;</span><span class="meta class instance constructor"><span class="keyword operator new js"><span>new</span></span><span>&nbsp;</span><span class="entity name type instance js"><span>L.Control</span></span></span><span class="meta delimiter method period js"><span>.</span></span><span>MiniMap</span><span class="meta brace round js"><span>(</span></span><span>layerMinimap</span><span class="meta brace round js"><span>)</span></span><span class="meta delimiter method period js"><span>.</span></span><span>addTo</span><span class="meta brace round js"><span>(</span></span><span>map</span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre>
+<h2 id="mashup">Mashup</h2>
+<h3 id="exemple-simple">Exemple simple</h3>
+<p><strong>1.</strong>
+Voici la carte uMap sur laquelle une couche contenant les antennes de Grenoble ont été ajoutés : <a href="http://umap.openstreetmap.fr/fr/map/carte-sans-nom_57492">http://umap.openstreetmap.fr/fr/map/carte-sans-nom_57492</a>.</p>
+<p><strong>2.</strong></p>
+<p>Pour compter le nombre d&#39;antenne, le CVS semble parfait puisqu&#39;il suffit de compter le nombre de ligne du document. Pour détecter le nombre d&#39;opérateurs, utiliser le CSV est en revanche plus compliqué. En effet, avant de pouvoir traiter les données dans le CSV, il faut écrire un parseur qui va créer des structures d&#39;objets contenant toutes les inforamtions. Mais lorsque la donnée est au format JSON, ce parseur existe déja. Utiliser ce type de donnée est donc plus simple.</p>
+<p>3.</p>
+<p>Ajouter toutes les antennes à une carte Leaflet se fait de la façon suivante :</p>
+<pre class="editor-colors lang-js"><div class="line"><span class="source js"><span class="storage modifier js"><span>var</span></span><span>&nbsp;antennes&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;</span><span class="meta brace curly js"><span>{</span></span><span class="meta delimiter method period js"><span>.</span><span>.</span><span>.</span></span><span class="keyword operator js"><span>&lt;</span></span><span>donnée_geoJson</span><span class="keyword operator js"><span>&gt;</span></span><span class="meta delimiter method period js"><span>.</span><span>.</span><span>.</span></span><span class="meta brace curly js"><span>}</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div><div class="line"><span class="source js"><span class="comment block js"><span class="punctuation definition comment js"><span>/*</span></span><span>&nbsp;Antennes&nbsp;de&nbsp;Grenoble&nbsp;</span><span class="punctuation definition comment js"><span>*/</span></span></span></span></div><div class="line"><span class="source js"><span>L</span><span class="meta delimiter method period js"><span>.</span></span><span>geoJson</span><span class="meta brace round js"><span>(</span></span><span>antennes</span><span class="meta brace round js"><span>)</span></span></span></div><div class="line"><span class="source js"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="meta delimiter method period js"><span>.</span></span><span>addTo</span><span class="meta brace round js"><span>(</span></span><span>map</span><span class="meta brace round js"><span>)</span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre>
+<p>Le script suivant permet de récupérer au format geojson toutes les antennes de Grenoble et de créer pour chaque opérateur un fichier text.</p>
+<pre class="editor-colors lang-php"><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="punctuation section embedded begin php"><span>&lt;?php</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;Read&nbsp;the&nbsp;antenne.geojson&nbsp;file</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wGeoJSON_text</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="support function file php"><span>file_get_contents</span></span><span>(</span><span class="string quoted double php"><span class="punctuation definition string begin php"><span>&quot;</span></span><span class="meta string-contents quoted double php"><span>antennes.geojson</span></span><span class="punctuation definition string end php"><span>&quot;</span></span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;decode&nbsp;the&nbsp;file</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wGesoJSON</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="support function json php"><span>json_decode</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wGeoJSON_text</span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wOperateurs</span></span><span class="punctuation terminator expression php"><span>;</span></span><span>&nbsp;</span><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;Tableau&nbsp;associatif&nbsp;de&nbsp;tableau</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment block php"><span class="punctuation definition comment php"><span>/*</span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment block php"><span>*&nbsp;Les&nbsp;clés&nbsp;de&nbsp;ce&nbsp;tableau&nbsp;sont&nbsp;les&nbsp;opérateurs.</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment block php"><span>*&nbsp;Les&nbsp;valeurs&nbsp;des&nbsp;tableaux&nbsp;contenants&nbsp;toutes&nbsp;les&nbsp;antennes</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment block php"><span class="punctuation definition comment php"><span>*/</span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="keyword control php"><span>foreach</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wGesoJSON</span></span><span class="keyword operator class php"><span>-&gt;</span></span><span class="variable other property php"><span>features</span></span><span>&nbsp;</span><span class="keyword operator logical php"><span>as</span></span><span>&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wFeature</span></span><span>)</span><span class="punctuation section scope begin php"><span>{</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wKey</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wFeature</span></span><span class="keyword operator class php"><span>-&gt;</span></span><span class="variable other property php"><span>properties</span></span><span class="keyword operator class php"><span>-&gt;</span></span><span class="variable other property php"><span>OPERATEUR</span></span><span class="punctuation terminator expression php"><span>;</span></span><span>&nbsp;</span><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;Récupère&nbsp;la&nbsp;clé</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wOperateurs</span></span><span class="punctuation section array begin php"><span>[</span></span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wKey</span></span><span class="punctuation section array end php"><span>]</span></span><span class="punctuation section array begin php"><span>[</span></span><span class="punctuation section array end php"><span>]</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wFeature</span></span><span class="punctuation terminator expression php"><span>;</span></span><span>&nbsp;</span><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;Ajoute&nbsp;l&#39;antenne&nbsp;en&nbsp;dernier&nbsp;élément&nbsp;du&nbsp;bon&nbsp;tableau</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation section scope end php"><span>}</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="keyword control php"><span>foreach</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wOperateurs</span></span><span>&nbsp;</span><span class="keyword operator logical php"><span>as</span></span><span>&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wOperateur</span></span><span>&nbsp;</span><span class="keyword operator key php"><span>=&gt;</span></span><span>&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wFeatures</span></span><span>)</span><span class="punctuation section scope begin php"><span>{</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment block php"><span class="punctuation definition comment php"><span>/*</span></span><span>&nbsp;Création&nbsp;d&#39;un&nbsp;fichier&nbsp;pour&nbsp;chaque&nbsp;élément&nbsp;du&nbsp;tableau&nbsp;associatif&nbsp;</span><span class="punctuation definition comment php"><span>*/</span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wJSON</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="string quoted double php"><span class="punctuation definition string begin php"><span>&quot;</span></span><span class="meta string-contents quoted double php"><span>{</span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="string quoted double php"><span class="meta string-contents quoted double php"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="constant character escape php"><span>\&quot;</span></span><span>name</span><span class="constant character escape php"><span>\&quot;</span></span><span>:</span><span class="constant character escape php"><span>\&quot;</span></span><span>DSPE_ANT_GSM_EPSG4326</span><span class="constant character escape php"><span>\&quot;</span></span><span>,&nbsp;</span><span class="constant character escape php"><span>\&quot;</span></span><span>type</span><span class="constant character escape php"><span>\&quot;</span></span><span>:</span><span class="constant character escape php"><span>\&quot;</span></span><span>FeatureCollection</span><span class="constant character escape php"><span>\&quot;</span></span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="string quoted double php"><span class="meta string-contents quoted double php"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,</span><span class="constant character escape php"><span>\&quot;</span></span><span>features</span><span class="constant character escape php"><span>\&quot;</span></span><span>:</span></span><span class="punctuation definition string end php"><span>&quot;</span></span></span><span class="keyword operator string php"><span>.</span></span><span class="support function json php"><span>json_encode</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wFeatures</span></span><span>)</span><span class="keyword operator string php"><span>.</span></span><span class="string quoted double php"><span class="punctuation definition string begin php"><span>&quot;</span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="string quoted double php"><span class="meta string-contents quoted double php"><span>&nbsp;&nbsp;&nbsp;&nbsp;}</span></span><span class="punctuation definition string end php"><span>&quot;</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="support function file php"><span>file_put_contents</span></span><span>(</span><span class="string quoted double php"><span class="punctuation definition string begin php"><span>&quot;</span></span><span class="meta string-contents quoted double php"><span>antenne_</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wOperateur</span></span><span>.json</span></span><span class="punctuation definition string end php"><span>&quot;</span></span></span><span>,&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wJSON</span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation section scope end php"><span>}</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="punctuation section embedded end php"><span class="source php"><span>?</span></span><span>&gt;</span></span></span><span class="punctuation whitespace embedded trailing php"><span>&nbsp;</span></span></span></div></pre>
+<p>Ajouter toutes les antennes sur des couches spécifique peut alors se faire avec un traitement javascript simple. Nous ne l&#39;avons donc pas fait pour passer aux question suivantes.</p>
+<h3 id="exemple-plus-complet">Exemple plus complet</h3>
+<p>Nous n&#39;avons pas eu le temps de traiter cette partie.</p>
+<h2 id="analyse-statistique">Analyse statistique</h2>
+<p>Tout d&#39;abord, voici le code utiliser pour effectuer les requetes GET et POST.</p>
+<pre class="editor-colors lang-php"><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="punctuation section embedded begin php"><span>&lt;?php</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="meta function php"><span class="storage type function php"><span>function</span></span><span>&nbsp;</span><span class="entity name function php"><span>GET</span></span><span class="punctuation definition parameters begin php"><span>(</span></span><span class="meta function arguments php"><span class="meta function argument no-default php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>aUrl</span></span></span></span><span class="punctuation definition parameters end php"><span>)</span></span></span><span class="punctuation section scope begin php"><span>{</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation whitespace comment leading php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;initialisation&nbsp;de&nbsp;la&nbsp;session</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wSession</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="support function curl php"><span>curl_init</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>aUrl</span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation whitespace comment leading php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;configuration&nbsp;des&nbsp;options</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="support function curl php"><span>curl_setopt</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wSession</span></span><span>,&nbsp;</span><span class="support constant ext php"><span>CURLOPT_RETURNTRANSFER</span></span><span>,&nbsp;</span><span class="constant language php"><span>true</span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="support function curl php"><span>curl_setopt</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wSession</span></span><span>,&nbsp;</span><span class="support constant ext php"><span>CURLOPT_BINARYTRANSFER</span></span><span>,&nbsp;</span><span class="constant language php"><span>true</span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation whitespace comment leading php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;exÃ©cution&nbsp;de&nbsp;la&nbsp;session</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wRes</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="support function curl php"><span>curl_exec</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wSession</span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation whitespace comment leading php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;fermeture&nbsp;de&nbsp;la&nbsp;session</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="support function curl php"><span>curl_close</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wSession</span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword control php"><span>return</span></span><span>&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wRes</span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation section scope end php"><span>}</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="meta function php"><span class="storage type function php"><span>function</span></span><span>&nbsp;</span><span class="entity name function php"><span>POST</span></span><span class="punctuation definition parameters begin php"><span>(</span></span><span class="meta function arguments php"><span class="meta function argument no-default php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>aUrl</span></span></span><span>,</span><span class="meta function argument no-default php"><span>&nbsp;</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>aPostParams</span></span></span></span><span class="punctuation definition parameters end php"><span>)</span></span></span><span class="punctuation section scope begin php"><span>{</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation whitespace comment leading php"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;</span><span class="storage type class todo"><span>TODO</span></span><span>:&nbsp;make&nbsp;function</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="punctuation section scope end php"><span>}</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="punctuation section embedded end php"><span class="source php"><span>?</span></span><span>&gt;</span></span></span><span class="punctuation whitespace embedded trailing php"><span>&nbsp;</span></span></span></div></pre>
+<p><strong>1.</strong></p>
+<p>Voici alors différents appels utilisé pour récupérer des cartes à patir de l&#39;API.</p>
+<pre class="editor-colors lang-php"><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="punctuation section embedded begin php"><span>&lt;?php</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>API_OSM</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="string quoted single php"><span class="punctuation definition string begin php"><span>&#39;</span></span><span class="meta string-contents quoted single php"><span class="markup underline link http hyperlink"><span>http://api.openstreetmap.org/api/0.6/</span></span></span><span class="punctuation definition string end php"><span>&#39;</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>API_XAPI</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="string quoted single php"><span class="punctuation definition string begin php"><span>&#39;</span></span><span class="meta string-contents quoted single php"><span class="markup underline link http hyperlink"><span>http://api.openstreetmap.fr/xapi</span></span></span><span class="punctuation definition string end php"><span>&#39;</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>API_OVERPASS</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="string quoted single php"><span class="punctuation definition string begin php"><span>&#39;</span></span><span class="meta string-contents quoted single php"><span class="markup underline link http hyperlink"><span>http://overpass-turbo.eu/</span></span></span><span class="punctuation definition string end php"><span>&#39;</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment block php"><span class="punctuation definition comment php"><span>/*</span></span><span>&nbsp;Open&nbsp;street&nbsp;map&nbsp;</span><span class="punctuation definition comment php"><span>*/</span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>API_OSM</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="string quoted single php"><span class="punctuation definition string begin php"><span>&#39;</span></span><span class="meta string-contents quoted single php"><span class="markup underline link http hyperlink"><span>http://api.openstreetmap.org/api/0.6/</span></span></span><span class="punctuation definition string end php"><span>&#39;</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wCall</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="string quoted double php"><span class="punctuation definition string begin php"><span>&quot;</span></span><span class="meta string-contents quoted double php"><span>map?bbox=5.76721,45.19351,5.76928,45.19425</span></span><span class="punctuation definition string end php"><span>&quot;</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wData</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="meta function-call php"><span>GET</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>API_OSM</span></span><span class="keyword operator string php"><span>.</span></span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wCall</span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>API_XAPI</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="string quoted single php"><span class="punctuation definition string begin php"><span>&#39;</span></span><span class="meta string-contents quoted single php"><span class="markup underline link http hyperlink"><span>http://api.openstreetmap.fr/xapi</span></span></span><span class="punctuation definition string end php"><span>&#39;</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wCall2</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="string quoted double php"><span class="punctuation definition string begin php"><span>&quot;</span></span><span class="meta string-contents quoted double php"><span>?node[bbox=5.76721,45.19351,5.76928,45.19425]</span></span><span class="punctuation definition string end php"><span>&quot;</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wData2</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="meta function-call php"><span>GET</span></span><span>(</span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>API_XAPI</span></span><span class="keyword operator string php"><span>.</span></span><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>wCall2</span></span><span>)</span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span>&nbsp;</span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;</span><span class="storage type class todo"><span>TODO</span></span><span>:&nbsp;appel&nbsp;POST&nbsp;pour&nbsp;overpast</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment block php"><span class="punctuation definition comment php"><span>/*</span></span><span>&nbsp;OverPass&nbsp;</span><span class="punctuation definition comment php"><span>*/</span></span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="variable other php"><span class="punctuation definition variable php"><span>$</span></span><span>API_OVERPASS</span></span><span>&nbsp;</span><span class="keyword operator assignment php"><span>=</span></span><span>&nbsp;</span><span class="string quoted single php"><span class="punctuation definition string begin php"><span>&#39;</span></span><span class="meta string-contents quoted single php"><span class="markup underline link http hyperlink"><span>http://overpass-turbo.eu/</span></span></span><span class="punctuation definition string end php"><span>&#39;</span></span></span><span class="punctuation terminator expression php"><span>;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;$wPostParams[];</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="source php"><span class="comment line double-slash php"><span class="punctuation definition comment php"><span>//</span></span><span>&nbsp;$wData3&nbsp;=&nbsp;¨POST($API_OVERPASS,&nbsp;$wPostParams);</span><span>&nbsp;</span></span></span></span></span></div><div class="line"><span class="text html php"><span class="meta embedded block php"><span class="punctuation section embedded end php"><span class="source php"><span>?</span></span><span>&gt;</span></span></span><span class="punctuation whitespace embedded trailing php"><span>&nbsp;</span></span></span></div></pre>
+<p>Nous n&#39;avons pas eu le temps de traiter la fin de cette partie.</p></body>
+</html>

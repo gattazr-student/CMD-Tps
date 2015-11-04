@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="tp.css" type="text/css" />
+  <link rel="stylesheet" href="unicode.css" type="text/css" />
+</head>
+<body>
+<div id="TOC">
+<ul>
+<li><a href="#tp-3-utilisation-des-données-osm">TP 3 : Utilisation des données OSM</a><ul>
+<li><a href="#leaflet-le-retour">Leaflet, le retour</a><ul>
+<li><a href="#prise-en-main">Prise en main</a></li>
+<li><a href="#interactions-utilisateur">Interactions utilisateur</a></li>
+<li><a href="#subsidiaire-visualisation-et-données-extraites">(Subsidiaire) Visualisation et données extraites</a></li>
+</ul></li>
+<li><a href="#mashup">Mashup</a><ul>
+<li><a href="#un-exemple-simple">Un exemple simple</a></li>
+<li><a href="#un-exemple-plus-complet">Un exemple plus complet</a></li>
+</ul></li>
+<li><a href="#analyse-statistique-xml-json">Analyse statistique (XML / json)</a></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="tp-3-utilisation-des-données-osm">TP 3 : Utilisation des données OSM</h1>
+<p><strong>NB : les questions &quot;subsidiaires&quot; sont des questions d'approfondissement, éventuellement longues. Elles ne sont à traiter que si vous avez terminé le TP, et dans l'ordre que vous préférez !</strong></p>
+<h2 id="leaflet-le-retour">Leaflet, le retour</h2>
+<p>Rappel : <em>Leaflet</em> est une bibliothèque JavaScript très simple pour afficher une &quot;carte glissante&quot;. Le début du TP est très fortement inspiré du tutoriel <a href="http://leafletjs.com/examples/quick-start.html">Quick Start</a> de Leaflet. En plus du tutoriel, vous pouvez vous référer à la<br /><a href="http://leafletjs.com/reference.html">documentation de référence</a>.</p>
+<h3 id="prise-en-main">Prise en main</h3>
+<p>Les fichiers <code>tp3-visu1.html</code> et <code>visu.css</code> fournissent une correction du TP2 - prise en main. Vous pouvez les utiliser comme base pour la suite.</p>
+<h3 id="interactions-utilisateur">Interactions utilisateur</h3>
+<ol style="list-style-type: decimal">
+<li><p>Indiquez les coordonnées du point cliqué par l'utilisateur, d'abord par une <code>alert()</code> JavaScript, puis par une infobulle <em>popup</em> pointant le point cliqué.</p></li>
+<li><p>Ensuite, utilisez deux points consécutifs pour définir un <em>rectangle</em> orange à afficher, et enfin déclenchez un zoom sur cette zone rectangulaire. Aide : vous utiliserez les méthodes <code>L.latLng()</code>, <code>L.rectangle()</code> et <code>map.fitBounds()</code>).</p></li>
+<li><p>Ajoutez le contrôle &quot;mini-carte&quot; (<a href="http://leafletjs.com/plugins.html#minimaps--synced-maps">MiniMap</a>) qui permet à l'utilisateur de voir une carte contextuelle réduite dans un coin de l'écran. C'est un plugin Leaflet qui fournit ce contrôle. Ce plugin est très simple d'emploi et la documentation livrée avec le code est largement suffisante.</p></li>
+<li><p>(subsidiaire) Sélectionnez dans la liste des rendus disponibles (par exemple à l'aide de uMap) deux ou trois rendus qui vous conviennent, et ajoutez à la carte le contrôle utilisateur qui lui permet de choisir le fond de carte parmi ceux-ci.</p></li>
+</ol>
+<h3 id="subsidiaire-visualisation-et-données-extraites">(Subsidiaire) Visualisation et données extraites</h3>
+<p>Maintenant, on reprend l'exercice portant sur le plan de secours de l'UFR IMAG en mode &quot;développeur&quot;. On va se passer de uMap et tout faire dans Leaflet.</p>
+<ol style="list-style-type: decimal">
+<li><p>Récupérez les données propres à l'affichage avec OverPass Turbo. Comparez les données <em>JSON brutes</em> de l'Overpass API et les données <em>GeoJSON</em>. Lesquelles sont les plus adaptées à l'affichage ? au post-traitement ?</p></li>
+<li><p>Utilisez deux couches vectorielles dans Leaflet pour afficher les données, avec la méthode <code>L.geoJson()</code>.</p></li>
+<li><p>(subsidiaire) Utilisez les données brutes OSM de l'Overpass API. Quel est le point de blocage, et comment le contourner ?</p></li>
+</ol>
+<h2 id="mashup">Mashup</h2>
+<p>Une application <em>mashup</em> est un type d'application qui croise plusieurs sources pour réaliser un traitement ou un affichage des données &quot;raffinées&quot;. Dans notre exemple, on va croiser 3 sources :</p>
+<ul>
+<li>OpenStreetMap, qu'on connaît déjà !</li>
+<li>Le portail commun (tout récent) des données ouvertes de <em>Grenoble Alpes Métropole</em>, de la <em>Ville de Grenoble</em> et du <em>SMTC</em> : <a href="http://data.beta.metropole-grenoble.fr/">DataMetroGre</a></li>
+<li>Des informations du Ministère de l'Éducation Nationale (MEN), disponibles sur le site <em>education.gouv.fr</em>, par <a href="http://www.education.gouv.fr/pid24302/annuaire-resultat-recherche.html?lycee_name=0380556Y">exemple</a>.</li>
+</ul>
+<h3 id="un-exemple-simple">Un exemple simple</h3>
+<ol style="list-style-type: decimal">
+<li><p>Récupérez le jeu de données <em>Antennes GSM</em> et visualisez-le dans uMap, puis dans Leaflet. Choisissez donc bien le format adapté. Pour le chargement en Javascript, le plus simple est d'utiliser une inclusion brute : <code>&lt;script src=&quot;antennes.geojson&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></p></li>
+<li><p>Combien a-t-on d'antennes ? Combien d'opérateurs présents et comment sont-ils repérés ? Accessoirement, quel est le format préférentiel pour faire ce traitement ?</p></li>
+<li><p>On veut afficher les antennes avec une couche par opérateur téléphonique. Il faut donc pré-traiter les données brutes en GeoJSON. On va le faire en PHP, pour obtenir autant de fichiers que d'opérateurs. Vous pouvez vous familiariser avec le format GeoJSON sur le <a href="http://geojson.org/">site officiel</a> ou sur <a href="https://en.wikipedia.org/wiki/GeoJSON">l'article Wikipedia</a>, et les tester avec le site <a href="http://geojson.io">geojson.io</a>. En quoi les données qu'on a sont-elles simplifiées par rapport au cas général ?</p></li>
+</ol>
+<p><em>NB</em> : en PHP, les fonctions qui vont nous servir sont <code>file_get_contents()</code>, <code>json_decode()</code>, <code>file_put_contents()</code>, <code>json_encode()</code>.</p>
+<h3 id="un-exemple-plus-complet">Un exemple plus complet</h3>
+<ol style="list-style-type: decimal">
+<li><p>Récupérez le jeu de données <em>Les équipements de Grenoble</em> et visualisez-le dans uMap puis dans Leaflet. Choisissez donc bien le format adapté.</p></li>
+<li><p>Combien le jeu comporte-t-il d'entrées, et combien de catégories / sous-catégories ? Donnez la liste des catégories, et la liste des sous-catégories.</p></li>
+<li><p>On se concentre sur la sous-catégorie &quot;écoles élémentaires&quot;. Visualisez dans Leaflet les données de la Ville et celles d'OpenStreetMap, dans deux couches séparées. Qu'est-ce qu'on peut en déduire ?</p></li>
+<li><p>Tous les établissements scolaires de France on un code appelé <strong>UAI</strong> (Unité Administrative Immatriculée) donné par le Ministère. Vérifiez à l'aide de overpass Turbo si toutes les écoles <em>élémentaires</em> de Grenoble ont cette référence. Visualisez dans uMap celles qui l'ont et celles qui ne l'ont pas, dans deux couches séparées.</p></li>
+<li><p>Dans la visualisation de la question 3, le but est d'ajouter dans uMap, pour chaque école affichée, un lien web <code>&lt;a href...&gt;</code> vers la fiche officielle en se basant sur le code UAI, en suivant cet <a href="http://www.education.gouv.fr/pid24302/annuaire-resultat-recherche.html?lycee_name=0380556Y">exemple</a>. Il vous faut donc pré-traiter (très légèrement) les données obtenues d'OSM avant de les ré-injecter dans uMap.</p></li>
+<li><p>Les données de la ville de Grenoble comportent aussi un identifiant des objets écoles. Comment s'appelle-t-il ? Peut-on passer directement de l'identifiant UAI à l'identifiant communal ? (si oui, comment ? si non, pourquoi ?)</p></li>
+</ol>
+<p>Quelles sont les difficultés et les enjeux de ce type de requêtes ? Quel rôle peut jouer OpenStreetMap ?</p>
+<h2 id="analyse-statistique-xml-json">Analyse statistique (XML / json)</h2>
+<ol style="list-style-type: decimal">
+<li>En PHP, sur une zone définie par une <em>bounding box</em> (quelques centaines de mètresd de côté maximum), téléchargez toutes les données OSM, avec les deux API (API/0.6 et Overpass) et les deux formats (XML et Json).</li>
+<li>Après avoir choisi le meilleur format pour ce faire, analysez les données obtenues pour compter le nombre d'utilisateurs contributeurs, ainsi que le nombre de contributions pour chaque utilisateur, en différenciant nœuds et chemins. Expliquez vos choix et méthode.</li>
+<li>Affichez en ligne de commande le Top 20 des contributeurs avec leur &quot;score&quot;, chacun identifié par son identifiant numérique et par son nom OSM.</li>
+<li>Faire de tout cela une fonction PHP propre qui prend en entrée une <em>bbox</em> et un nombre <em>N</em> et qui renvoie en sortie un tableau Top <em>N</em> défini comme ci-dessus. <!-- 5. Même question en ajoutant un nouveau paramètre, la date seuil, pour ne compter que les
+contributeurs actifs depuis une certaine date.--></li>
+<li>(subsidiaire) Pour des zones trop grandes, l'API refuse de charger la zone. Dans ce cas, on utilise la méthode &quot;<em>Quadtree</em>&quot; : on coupe récursivement la zone en 4 rectangles égaux (double dichotomie, en latitude et en longitude), et on retente le chargement sur les 4 zones. On recommence récursivement tant que nécessaire. Écrire en PHP le programme capable de gérer cela.</li>
+<li>(subsidiaire^2)Pour visualiser l'avancement du chargement, parallèlement, le processus PHP génére un affichage Leaflet/Javascript des zones en cours de chargement (rectangles). Implémenter cela de la façon la plus simple possible (génération de script JavaScript).</li>
+</ol>
+</body>
+</html>

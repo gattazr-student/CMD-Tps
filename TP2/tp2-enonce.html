@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="tp.css" type="text/css" />
+  <link rel="stylesheet" href="unicode.css" type="text/css" />
+</head>
+<body>
+<div id="TOC">
+<ul>
+<li><a href="#contribution-à-openstreetmap">Contribution à OpenStreetMap</a></li>
+<li><a href="#cartes-personnalisées">Cartes personnalisées</a><ul>
+<li><a href="#umap-fabrication-de-carte-personnalisée">uMap : fabrication de carte personnalisée</a></li>
+<li><a href="#overpass-turbo">Overpass Turbo</a></li>
+</ul></li>
+<li><a href="#visualisation">Visualisation</a><ul>
+<li><a href="#leaflet">Leaflet</a><ul>
+<li><a href="#prise-en-main">Prise en main</a></li>
+<li><a href="#interactions-utilisateur">Interactions utilisateur</a></li>
+<li><a href="#visualisation-et-données-extraites">Visualisation et données extraites</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<h1 id="contribution-à-openstreetmap">Contribution à OpenStreetMap</h1>
+<p>Choisissez une zone que vous connaissez bien (quartier, village...), de préférence loin de Grenoble (pour éviter de tous contribuer au même endroit). Vous allez vérifier si la zone est complète. Dans le cas contraire, vous pourrez compléter les données (avec précaution).</p>
+<p>Pour contribuer, vous allez utiliser soit JOSM (<em>de préférence</em>), le principal éditeur spécialisé, soit l'éditeur <em>ID</em>, intégré au navigateur (écrit en JavaScript).</p>
+<p>Sur la zone cible que vous avez choisie, chargez les données, et vérifiez les données présentes. Comme sources vous pourrez utilisez</p>
+<ul>
+<li>votre connaissance personnelle du terrain (de mémoire !)</li>
+<li>les traces GPS éventuellement contribuées par d'autres utilisateurs</li>
+<li>l'imagerie aérienne (souvent <em>Bing</em>) si elle est suffisamment précise</li>
+<li>en France, le fond de plan du cadastre, fourni par la <em>DGFiP</em></li>
+</ul>
+<p>Vous pouvez essayez de complétez les principaux types d'objets :</p>
+<ul>
+<li>voirie (<em>highway=</em>) : routes (<em>primary</em>, <em>secondary</em>, <em>tertiary</em>, <em>unclassified</em>), rues (<em>residential</em>), pistes (<em>track</em>), chemins (<em>path</em>, <em>footway</em>)</li>
+<li>équipements : commerces, bars, restaurants, hôtels (<em>amenity</em>, <em>tourism</em>), bancs, points de recyclage...</li>
+<li>occupation du sol (<em>landuse=</em>) : résidentiel, commercial, industriel, agricole (<em>farm</em>), forêt...</li>
+</ul>
+<p>Consignes :</p>
+<ul>
+<li>pour chaque série de changements (<em>changeset</em>), rédigez un commentaire explicite résumant les modifications. Par exemple. &quot;<em>FR-38 Grenoble Parc Mistral ajout des arbres et des points d'eau</em>&quot;.</li>
+<li>en cas de doute, lisez bien les indications sur le <a href="http://wiki.openstreetmap.org/">Wiki OSM</a>, qui est utilisé pour documenter tous les attributs (<em>tags</em>) utilisés.</li>
+<li>si les doutes persistent, demandez conseil à l'enseignant.</li>
+</ul>
+<h1 id="cartes-personnalisées">Cartes personnalisées</h1>
+<h2 id="umap-fabrication-de-carte-personnalisée">uMap : fabrication de carte personnalisée</h2>
+<p>Utilisez le service <a href="http://umap.openstreetmap.fr">uMap</a> pour créer une carte <em>personnalisée</em>, sur la zone de votre choix. Ajoutez quelques données &quot;subjectives&quot; qui n'auraient pas leur place dans OSM. Par exemple, quelques lieux favoris (marqueurs ou polygones), un ou deux trajets habituels.</p>
+<p>Quelques fonctionnalités à tester :</p>
+<ul>
+<li>l'utilisation de plusieurs couches de données, avec un style par couche</li>
+<li>la cohabitation des trois types d'objets : marqueurs, polylignes et polygones, et la gestion de la transparence</li>
+<li>le choix du fond de carte</li>
+<li>le partage de la carte créée en différents &quot;formats&quot;</li>
+</ul>
+<p>Si vous créez cette carte avec votre compte OSM, vous pourrez la retrouver plus tard, et éventuellement la partager. Vous pouvez aussi la détruire à la fin de la session si vous préférez.</p>
+<h2 id="overpass-turbo">Overpass Turbo</h2>
+<p><a href="http://overpass-turbo.eu/">Overpass Turbo</a> (<a href="http://wiki.openstreetmap.org/wiki/FR:Overpass_turbo">Doc wiki</a>) permet de tester des requêtes pour extraire des données issues d'OSM, notamment grâce à l'assistant (<em>wizard</em>) qui facilite grandement les premiers pas. On va s'en servir pour mettre au point un &quot;<em>plan de secours</em>&quot; concernant le bâtiment UFR IMAG.</p>
+<ol style="list-style-type: decimal">
+<li><p>Extraire toutes les bornes d'incendie (<em>emergency=fire_hydrant</em>) dans une <em>bbox</em> entourant le bâtiment de l'UFR IMAG. L'assistant fournit un code de base très utile, mais qui reste optimisable. Dans quel sens peut-on faire cette optimisation ? Conservez la requête &quot;optimisée&quot; dans un fichier.</p></li>
+<li><p>Extraire également toutes les issues (<em>entrance=?</em>) du bâtiment, éventuellement classées par type (voir cet attribut sur le wiki).</p></li>
+<li><p>Sur uMap, vous pouvez importer directement un fichier GeoJSON. Utilisez l'export GeoJSON de Turbo Overpass pour afficher les objets extraits aux 2 premières questions : affichez sous forme d'épingle rouge les bornes incendie et sous forme d'icone verte les issues. D'après vous, y a-t-il d'autres éléments OSM intéressants à visualiser pour un plan de secours ?</p></li>
+</ol>
+<h1 id="visualisation">Visualisation</h1>
+<h2 id="leaflet">Leaflet</h2>
+<h3 id="prise-en-main">Prise en main</h3>
+<ol style="list-style-type: decimal">
+<li><p>Récupérez les fichiers <code>visu0.html</code> et <code>visu0.css</code> pour obtenir une ébauche de visualisation en carte glissante à l'écran. Vérifiez que ça marche dans votre navigateur ! Avec cet exemple basique, par défaut, combien (approximativement) de tuiles sont montrées à l'écran ? (détaillez vos hypothèses si elles ne sont pas évidentes). Vérifiez vos prédictions à l'aide de la console réseau de votre navigateur (Ctrl + Shift + I).</p></li>
+<li><p>Adaptez le cadre précédent pour visualiser la carte dans un canevas de 1280 x 1024 pixels représentant la totalité du campus. Combien de tuiles (environ) sont affichées cette fois ? Vous trouverez de l'aide dans le tutoriel <a href="http://leafletjs.com/examples/quick-start.html">Quick Start</a> de Leaflet.</p></li>
+<li><p>Ajoutez un marqueur sur l'entrée de l'UFRIM2AG, et une &quot;zone d'influence&quot; de 300 m de rayon centrée sur Polytech. En plus du tutoriel, vous pouvez vous référer à la <a href="http://leafletjs.com/reference.html">documentation de référence</a> de Leaflet. Ensuite, ajoutez un itinéraire (à vol d'oiseau) entre Polytech et l'UFR passant par l'arrêt de tram <em>Berlioz</em>, et ajoutez un cercle sur cet arrêt de 20 pixels de rayon. Des deux cercles, lequel est le plus grand à l'écran et pourquoi ? Quelle est la meilleure méthode de visualisation ?</p></li>
+</ol>
+<h3 id="interactions-utilisateur">Interactions utilisateur</h3>
+<ol style="list-style-type: decimal">
+<li><p>Indiquez les coordonnées du point cliqué par l'utilisateur, d'abord par une <code>alert()</code> JavaScript, puis par une infobulle <em>popup</em> pointant le point cliqué. Ensuite, utilisez deux points consécutifs pour définir un <em>rectangle</em> orange à afficher, et enfin déclenchez un zoom sur cette zone rectangulaire (<code>fitBounds()</code>).</p></li>
+<li><p>Sélectionnez dans la liste des rendus disponibles (par exemple à l'aide de uMap) deux ou trois rendus qui vous conviennent, et ajoutez à la carte le contrôle utilisateur qui lui permet de choisir le fond de carte parmi ceux-ci.</p></li>
+<li><p>Ajoutez le contrôle &quot;mini-carte&quot; (<a href="http://leafletjs.com/plugins.html#minimaps--synced-maps">MiniMap</a>) qui permet à l'utilisateur de voir une carte contextuelle réduite dans un coin de l'écran. C'est un plugin Leaflet qui fournit ce contrôle.</p></li>
+<li><p>Parmi la <a href="http://leafletjs.com/plugins.html">liste des plugins</a>, choisissez-en un autre qui vous semble adapté à la visualisation en cours, ajoutez-le et expliquez votre choix.</p></li>
+</ol>
+<h3 id="visualisation-et-données-extraites">Visualisation et données extraites</h3>
+<p>Reprenez l'exercice portant sur le plan de secours de l'UFR IMAG en mode &quot;développeur&quot;.</p>
+<ol style="list-style-type: decimal">
+<li><p>Récupérez les données propres à l'affichage avec OverPass Turbo. Comparez les données <em>JSON brutes</em> de l'Overpass API et les données <em>GeoJSON</em>. Lesquelles sont les plus adaptées à l'affichage ? au post-traitement ?</p></li>
+<li><p>Utilisez la couche vectorielle de Leaflet pour les afficher, avec la méthode <code>L.geoJson()</code>.</p></li>
+</ol>
+</body>
+</html>

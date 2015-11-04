@@ -1,0 +1,92 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Visu 1 Leaflet</title>
+    <!--  Leaflet -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+    <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+    <!-- MiniMap -->
+    <link rel="stylesheet" href="minimap/src/Control.MiniMap.css" />
+    <script type="text/javascript" src="minimap/src/Control.MiniMap.js"></script>
+    <!--  Antennes -->
+    <script src="antennes.geojson" type="text/javascript"></script>
+    <!-- Extra css -->
+    <link rel="stylesheet" href="visu.css" />
+</head>
+
+<body>
+
+<div id="map"> </div>
+
+<script>
+function loadJSON(callback, filePath) {
+    var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+    xobj.open('GET', $filePath, true);
+    xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == "200") {
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+          }
+    };
+    xobj.send(null);
+ }
+// Crédit to http://codepen.io/KryptoniteDove/post/load-json-file-locally-using-pure-javascript
+</script>
+<script>
+ var urltiles = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+ var attrib = '&copy; contributeurs <a href="http://osm.org/copyright">OpenStreetMap</a>';
+
+
+ // ajouter une carte dans la div "map" et fixer le centre et le zoom
+ var map = L.map('map')
+    .setView([45.1930, 5.7680], 16);
+
+ // ajouter une couche tuiles OpenStreetMap
+ var layerMain = L.tileLayer(urltiles, {attribution: attrib})
+    .addTo(map);
+
+ufrEntrance = [ 45.19393, 5.76827 ];
+polyCenter = [ 45.18447, 5.75294 ];
+berlioz = [ 45.19106, 5.75875 ];
+
+var ufrMarker = L.marker(ufrEntrance).addTo(map);
+var polyCircle = L.circle(polyCenter, 300).addTo(map);
+var trajet = L.polyline([ufrEntrance, berlioz, polyCenter]).addTo(map);
+var arretCirc = L.circleMarker(berlioz, 12).addTo(map);
+// var rectbox = L.rectangle( [polyCenter, ufrEntrance], {color: "#ff7800", weight: 1}).addTo(map);
+
+/* Gestion du click sur la carte (infoBulle + rectangle et zoom)*/
+var point = null;
+var layer = L.layerGroup([])
+function onMapClick(e) {
+    if(point == null){
+        point = e.latlng;
+        layer.clearLayers();
+    }else{
+        var bounds = [point, e.latlng];
+        layer.addLayer(L.rectangle(bounds, {color: "#ff7800", weight: 1}))
+            .addTo(map);
+        map.fitBounds(bounds);
+        point = null;
+    }
+
+    var popup = L.popup()
+        .setLatLng(e.latlng)
+        .setContent("Les coordonnées de ce point sont : " + e.latlng)
+        .openOn(map);
+}
+
+map.on('click', onMapClick);
+
+/* Minimap */
+var layerMinimap = new L.TileLayer(urltiles, {attribution: attrib});
+var miniMap = new L.Control.MiniMap(layerMinimap).addTo(map);
+
+/* Antennes de Grenoble */
+// JSON.parse(theTextContentOfMyFile);
+
+</script>
+
+</body>
+</html>
